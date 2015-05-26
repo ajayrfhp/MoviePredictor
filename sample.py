@@ -4,7 +4,22 @@ from functions import *
 
 tmdb.API_KEY=APIKEY
 
+movieInfo=movieSearch(MOVIENAME)
+genre=movieInfo['genres']
+revenue=movieInfo['revenue']
+productionCompanies=movieInfo['production_companies']
+budget=movieInfo['budget']
+review=movieInfo['vote_average']
 
+print genre
+print revenue
+print productionCompanies
+print budget
+print review
+
+
+
+		
 directorId=helperSearch(MOVIENAME,'Directing','crew')[0]
 print directorId
 

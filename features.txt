@@ -7,7 +7,7 @@ INPUT:
 	actor2Revnue
 	actor3Revnue
 	budget
-	franchise
+	popularity of franchise if its franchise
 	genre (bit vector)
 	production studio(bit vector)
 	

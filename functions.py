@@ -1,5 +1,13 @@
 import tmdbsimple as tmdb
 from glb import *
+
+def movieSearch(movieName):
+	search=tmdb.Search()
+	responses=search.movie(query=movieName)
+	movie=tmdb.Movies(responses['results'][0]['id'])
+	info=movie.info()
+	return info
+
 def helperSearch(movieName,answer,answerDepartment):
 	
 	search=tmdb.Search()

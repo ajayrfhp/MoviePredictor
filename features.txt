@@ -1,0 +1,27 @@
+INPUT:
+	revenue is revenue/Budget :P
+
+	dirRevenue
+	dirImdbRating
+	actor1Revnue
+	actor2Revnue
+	actor3Revnue
+	budget
+	franchise
+	genre (bit vector)
+	production studio(bit vector)
+	
+
+	MONEY Should be normalized taking into account inflation 
+
+OUTPUT:
+	revenue
+	rating
+	
+
+
+logistic regression and neural network 
+
+
+
+

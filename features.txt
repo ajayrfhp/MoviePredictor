@@ -1,26 +1,37 @@
-INPUT:
-	revenue is revenue/Budget :P
-
-	dirRevenue
-	dirImdbRating
-	actor1Revnue
-	actor2Revnue
-	actor3Revnue
-	budget
-	popularity of franchise if its franchise
-	genre (bit vector)
-	production studio(bit vector)
+INPUT:															
+	revenue is revenue/budget                   float             done
+	dirAvgRevenue								float	          done
+	dirAvgRating								float	          done
+	dirBestRevenue								float	          done
+	dirWorstRating								float	          done
+	dirBestRevenue								float	          done
+	dirWorstRating								float	          done
 	
+	actor1AvgRevnue								float			  done
+	actor1AvgRating								float             done
+	actor2AvgRevnue								float			  done
+	actor2AvgRating								float		      done 
+	actor3AvgRevnue								float             done
+	actor3AvgRating								float             done	
+	budget										float             done
+	popularity of franchise if its franchise   	float             done
+	genre (bit vector)							bit vector        done
 
-	MONEY Should be normalized taking into account inflation 
+
+	revnue is calculated proportional to budget so neutrailizing inflation effect :P on of the million other assumptions i am going to make :P XD .
+
+
 
 OUTPUT:
-	revenue
-	rating
-	
+	class predicted
+	blockbuster                            rating > 7 , box office >3
+	box office winner                      rating < 7 ,box office > 3 
+	critical winner                        rating > 7 ,box office < 3
+	mediocore                              ratio < 2   box office <3
+	disaster                               ratio < 1   box office >3
 
-
-logistic regression and neural network 
+MODELS:
+	logistic regression and neural network 
 
 
 

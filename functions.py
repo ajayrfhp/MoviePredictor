@@ -4,33 +4,13 @@ from glb import *
 def movieSearch(movieName):
 	search=tmdb.Search()
 	responses=search.movie(query=movieName)
+	
 	movie=tmdb.Movies(responses['results'][0]['id'])
+
 	info=movie.info()
 
 	return info
 
-def helperSearch(movieName,answer,answerDepartment):
-	
-	search=tmdb.Search()
-	responses = search.movie(query=movieName)
-	movie=tmdb.Movies(responses['results'][0]['id'])
-	info=movie.info()
-	credits=movie.credits()[answerDepartment]
-	answerId=[]
-	
-
-
-
-	if(answer=='Directing' or answer=='Production'):
-		for i in range(len(credits)):	
-			if(credits[i]['department']==answer):
-				answerId.append(credits[i]['id'])
-		return answerId[0:3]			
-	
-	else:
-		for i in range(len(credits)):	
-			answerId.append(credits[i]['id'])
-	return answerId[0:3]		
 
 
 def peopleSearch(personId,answer,answerDepartment):
@@ -45,7 +25,7 @@ def peopleSearch(personId,answer,answerDepartment):
 	bestRevenuePerson=0
 	worstRatingPerson=999999999999999999
 	worstRevenuePerson=999999999999999999
-	if(answer=='Directing'):
+	if(answer=='Directing' or answer=='Writing' or answer=='Production' ):
 
 		for i in range(len(previousMoviesPerson)):
 			if(previousMoviesPerson[i]['department']==answer):
@@ -92,25 +72,34 @@ def peopleSearch(personId,answer,answerDepartment):
 				bestRatingPerson=max(bestRatingPerson,movieInfo['vote_average'])
 				worstRatingPerson=min(worstRatingPerson,movieInfo['vote_average'])
 				cntRatingPerson+=1						
-
-	avgRatingPerson=(avgRatingPerson/cntRatingPerson)
-	avgRevenuePerson=(avgRevenuePerson/cntRevenuePerson)
-
+	if(cntRatingPerson>0):
+		avgRatingPerson=(avgRatingPerson/cntRatingPerson)
+	else:
+		avgRatingPerson=5
+	if(cntRevenuePerson>0):	
+		avgRevenuePerson=(avgRevenuePerson/cntRevenuePerson)
+	else:
+		avgRevenuePerson=1
 	result={}
+	for key in result:
+		if(result[key]>10):
+			result[key]=6
+
+
 	result['avgRatingPerson']=avgRatingPerson
 	result['avgRevenuePerson']=avgRevenuePerson
 	result['bestRatingPerson']=bestRatingPerson
 	result['bestRevenuePerson']=bestRevenuePerson
 	result['worstRatingPerson']=worstRatingPerson
 	result['worstRevenuePerson']=worstRevenuePerson
+	if(result['worstRatingPerson']>10):
+		result['worstRatingPerson']=6
+	
+	if(result['worstRevenuePerson']>10):
+		result['worstRevenuePerson']=6
+
 	return result
 
-def productionSearch(productionCompanyName):
-	search=tmdb.Search()
-	response=search.company(query=productionCompanyName)
-	print(help(search))
-
-	return None	
 
 def findBitVector(thisMovieGenres):
 	a=[]

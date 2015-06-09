@@ -9,35 +9,25 @@ tmdb.API_KEY=APIKEY
 discover=tmdb.Discover()
 responses=discover.movie(year=1994)
 movies=[]
-f=open("output.txt",'w')
-for y in range(1977,2015):
-	print(y)
-	for p in range(2):
+
+with open('output.txt','w') as f:
+	for y in range(1977,2015):
+		print(y)
+		responses=discover.movie(page=1,year=y)
 		cnt=0
-		responses=discover.movie(page=p+1,year=y)
 		for result in responses['results']:
+			result['title']=result['title'].encode('ascii','ignore')
 			movies.append(result['title'])
 			cnt+=1
 			
 			movieInfo=movieSearch(result['title'])
-
-			for ij in range(len(movieInfo['production_companies'])):
-				if(movieInfo['production_companies'][ij]['name'] not in productionCompaniesPopluate):
-					productionCompaniesPopluate.append(movieInfo['production_companies'][ij]['name'])
-					
-
-
-
-			for ij in range(len(movieInfo['genres'])):
-				if(movieInfo['genres'][ij]['name'] not in genreTest):
-					genreTest.append(movieInfo['genres'][ij]['name'])	
-			if(cnt>10):
+			x=movieInfo['title'].encode('ascii','ignore')
+			print x
+			f.write("'"+str(x)+"',")	
+			if(cnt>20):
 				break
 
-
-print productionCompaniesPopluate
-print genreTest
-
+print movies
 
 '''
 movie=tmdb.Movies(responses['results'][0]['id'])

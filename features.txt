@@ -21,6 +21,10 @@ INPUT:
 	revnue is calculated proportional to budget so neutrailizing inflation effect :P on of the million other assumptions i am going to make :P XD .
 
 
+	{0: 181, 1: 54, 2: 89, 3: 153}
+	
+
+
 
 OUTPUT:
 	class predicted

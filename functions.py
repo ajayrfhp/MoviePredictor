@@ -1,5 +1,6 @@
 import tmdbsimple as tmdb
 from glb import *
+tmdb.API_KEY=APIKEY
 
 def movieSearch(movieName):
 	search=tmdb.Search()
@@ -115,4 +116,96 @@ def findBitVector(thisMovieGenres):
 			ans[cnt]=1
 		cnt+=1		
 	return ans	
+def getFingerPrint(movieName):
+	movieNameList=[]
+	movieNameList.append(0)
+	ij=0
+	movieNameList[ij]=movieName
+	search=tmdb.Search()
+	responses=search.movie(query=movieNameList[ij])
+	movie=tmdb.Movies(responses['results'][0]['id'])
+	movieInfo=movie.info()
+		
+	credits=movie.credits()['crew']
+
+
+	
+	genre=movieInfo['genres']
+	revenue=float(movieInfo['revenue'])
+
+
+
+	budget=float(movieInfo['budget'])
+	review=movieInfo['vote_average']
+	popularity=movieInfo['popularity']
+
+	#print genre
+	#print revenue
+
+
+	#print budget
+	#print review
+	#print popularity
+
+	writerId=-1
+	for i in range(len(credits)):	
+			if(credits[i]['department']=='Writing'):
+				writerId=credits[i]['id']
+				break
+
+	directorId=-1
+	for i in range(len(credits)):	
+			if(credits[i]['department']=='Directing'):
+				directorId=credits[i]['id']
+				break
+
+
+
+
+
+	#print writerId
+	writerAvgRating=peopleSearch(writerId,'Writing','crew')
+	#print writerAvgRating
+	directorAvgRating=peopleSearch(directorId,'Directing','crew')
+	#print directorAvgRating
+
+
+			
+
+
+
+	#print directorId
+
+
+
+
+	genreBitVector=findBitVector(genre)
+	inputFeature=[]
+
+	for key in genreBitVector:
+		inputFeature.append(key)
+
+
+	inputFeature.append(0)
+
+	for key in directorAvgRating.keys():
+		inputFeature.append(directorAvgRating[key])
+
+	for key in writerAvgRating.keys():
+		inputFeature.append(writerAvgRating[key])
+
+
+	
+
+
+
+
+	target=-1
+
+
+
+	
+	print inputFeature		
+	fingerPrint=inputFeature
+	return fingerPrint
 

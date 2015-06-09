@@ -101,11 +101,7 @@ with open('output2.txt','a') as f:
 			target=2 ##PROFITABLE VENTURE
 		elif(review<6.5 and review>=5 and (revenue/budget)<3):	
 			target=3 ##AVERAGE
-		elif(review<5 and (revenue/budget)>=1):	
-			target=4 ##MEDIOCORE
-		elif((revenue/budget)<1):	
-			target=5 ##DISASTER		
-
+		
 
 		for i in inputFeature:
 			f.write(str(i)+',')	

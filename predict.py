@@ -15,7 +15,9 @@ cnt=0
 m={0:0,1:0,2:0,3:0}
 
 #### DATA CLEANING 
-inputFeature=[1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 6.9, 12.2455, 10.0, 4.5, 1.2857156857142857, 6.422812729725015, 6.976923076923077, 12.2455, 10.0, 5.8, 1.2857156857142857, 7.081025974320272]
+#inputFeature=[1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 6.9, 12.2455, 10.0, 4.5, 1.2857156857142857, 6.422812729725015, 6.976923076923077, 12.2455, 10.0, 5.8, 1.2857156857142857, 7.081025974320272]
+inputFeature=getFingerPrint(movieName)
+print inputFeature
 line=inputFeature
 	
 for l in range(len(line)):
@@ -27,16 +29,15 @@ for l in range(len(line)):
 		inputData.append(line[l])
 
 
-'''
-inputFeature=getFingerPrint(movieName)
-print inputFeature
+
+
 
 clf=constructModel()
 
-'''
 
-clf=constructModel()
-####DIVIDED INTO TRAINING DATA AND TEST DATA 
+
+
+
 
 
 

@@ -59,9 +59,15 @@ def constructModel():
 	####DIVIDED INTO TRAINING DATA AND TEST DATA 
 	'''''DATA PREPARING AND CLEANING STEPS 
 	HERE COMES THE MODEL '''
-
+	cnt=0
 	
 	clf=svm.SVC()
 	clf.fit(trainingData,trainingTarget)
+	for i in range(len(testData)):
+		if(int(clf.predict(testData[i]))==testTarget[i]):
+			cnt+=1
+		
 	###TEST
+	print cnt
 	return clf
+constructModel()	

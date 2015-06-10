@@ -10,14 +10,18 @@ from model import *
 
 inputData=[]
 
-movieName=sys.argv[1]
+movieNameList=sys.argv[1:]
+movieName=""
+for name in movieNameList:
+	movieName=movieName+name+" "
+print movieName	
 cnt=0
 m={0:0,1:0,2:0,3:0}
 
 #### DATA CLEANING 
 #inputFeature=[1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 6.9, 12.2455, 10.0, 4.5, 1.2857156857142857, 6.422812729725015, 6.976923076923077, 12.2455, 10.0, 5.8, 1.2857156857142857, 7.081025974320272]
 inputFeature=getFingerPrint(movieName)
-print inputFeature
+
 line=inputFeature
 	
 for l in range(len(line)):
@@ -39,9 +43,16 @@ clf=constructModel()
 
 
 
-
+prediction=int(clf.predict(inputData))
 
 #clf=svm.SVC()
-print int(clf.predict(inputData))
+if(prediction==0):
+	print "BLOCKBUSTER"
+elif(prediction==1):
+	print "CRITICAL WINNER"	
+elif(prediction==2):
+	print "COMMERCIAL VENTURE"
+else:
+	print "MEDIOCORE	"	
 ###TEST
 

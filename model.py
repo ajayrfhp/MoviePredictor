@@ -68,6 +68,5 @@ def constructModel():
 			cnt+=1
 		
 	###TEST
-	print cnt
 	return clf
 constructModel()	

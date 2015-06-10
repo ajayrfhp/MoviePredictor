@@ -17,7 +17,7 @@ def movieSearch(movieName):
 def peopleSearch(personId,answer,answerDepartment):
 	person=tmdb.People(personId)
 	previousMoviesPerson=person.movie_credits()[answerDepartment]
-
+	print str(answer)+" "+str(person.info()['name']) 
 	avgRevenuePerson=0
 	avgRatingPerson=0
 	cntRatingPerson=0
@@ -33,6 +33,7 @@ def peopleSearch(personId,answer,answerDepartment):
 				movieInfo=movieSearch(previousMoviesPerson[i]['title'])
 				if(movieInfo['budget'] and movieInfo['revenue']):
 					cntRevenuePerson+=1
+
 					movieInfo['budget']=float(movieInfo['budget'])
 					movieInfo['revenue']=float(movieInfo['revenue'])
 					
@@ -46,33 +47,7 @@ def peopleSearch(personId,answer,answerDepartment):
 					avgRatingPerson=float(avgRatingPerson+movieInfo['vote_average'])
 					bestRatingPerson=max(bestRatingPerson,movieInfo['vote_average'])
 					worstRatingPerson=min(worstRatingPerson,movieInfo['vote_average'])
-					cntRatingPerson+=1
-	else:
-		for i in range(len(previousMoviesPerson)):
-			movieInfo=movieSearch(previousMoviesPerson[i]['title'])
-			if(movieInfo['budget'] and movieInfo['revenue']):
-				cntRevenuePerson+=1
-				movieInfo['budget']=float(movieInfo['budget'])
-				movieInfo['revenue']=float(movieInfo['revenue'])
-				ratio=(movieInfo['revenue']/movieInfo['budget'])
-				if(movieInfo['revenue']/movieInfo['budget']>100 ):	
-					ratio=1
-				elif(movieInfo['revenue']/movieInfo['budget']<0.1):
-					ratio=0.1	
-
-				avgRevenuePerson=avgRevenuePerson+(ratio)
-				bestRevenuePerson=max(bestRevenuePerson,ratio)
-				worstRevenuePerson=min(worstRevenuePerson,(ratio))
-
-
-				
-
-
-			if(movieInfo['vote_average']!=0):
-				avgRatingPerson=float(avgRatingPerson+movieInfo['vote_average'])
-				bestRatingPerson=max(bestRatingPerson,movieInfo['vote_average'])
-				worstRatingPerson=min(worstRatingPerson,movieInfo['vote_average'])
-				cntRatingPerson+=1						
+					cntRatingPerson+=1					
 	if(cntRatingPerson>0):
 		avgRatingPerson=(avgRatingPerson/cntRatingPerson)
 	else:
@@ -82,10 +57,15 @@ def peopleSearch(personId,answer,answerDepartment):
 	else:
 		avgRevenuePerson=1
 	result={}
-	for key in result:
-		if(result[key]>10):
-			result[key]=6
+	if(avgRatingPerson>10):
+		avgRatingPerson=6
+	if(bestRatingPerson>10):
+		bestRatingPerson=6
+	if(worstRatingPerson>6):
+		worstRatingPerson=6		
 
+
+	#print '______________'	
 
 	result['avgRatingPerson']=avgRatingPerson
 	result['avgRevenuePerson']=avgRevenuePerson
@@ -93,11 +73,10 @@ def peopleSearch(personId,answer,answerDepartment):
 	result['bestRevenuePerson']=bestRevenuePerson
 	result['worstRatingPerson']=worstRatingPerson
 	result['worstRevenuePerson']=worstRevenuePerson
-	if(result['worstRatingPerson']>10):
-		result['worstRatingPerson']=6
-	
-	if(result['worstRevenuePerson']>10):
-		result['worstRevenuePerson']=6
+	for key in result:
+
+		print str(key)+" "+str(result[key])
+	print '______________'
 
 	return result
 
@@ -112,11 +91,14 @@ def findBitVector(thisMovieGenres):
 		ans.append(0)
 	cnt=0
 	for genre in genres :
+
 		if(genre in thisMovieGenre):
+			print genre
 			ans[cnt]=1
 		cnt+=1		
 	return ans	
 def getFingerPrint(movieName):
+
 	movieNameList=[]
 	movieNameList.append(0)
 	ij=0
@@ -204,7 +186,7 @@ def getFingerPrint(movieName):
 
 
 
-	
+	print 'Genereating FingerPrint'
 	print inputFeature		
 	fingerPrint=inputFeature
 	return fingerPrint

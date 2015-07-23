@@ -12,7 +12,8 @@
 
 
 
-Movie Success Predictor engine  is an application of  machine learning, that builds a system that predicts the sucess of a movie.Billions of dollars are spent by various production houses across the globe to make movies year after year.What determines the success of a movie is an intriguing question ,and one that cannot be explained in a single sentence.Do good directors always make good movies ? .Is it independent of the actors involed ?.How crucial is the contribution of writer towards the sucess of the movie ? Does the genre of the movie matter ?. These are some of the questions that we attempt to find a solution using our engine . 
+Movie Success Predictor engine  is an application of  machine learning, that builds a system that predicts the sucess of a movie.Billions of dollars are spent by various production houses across the globe to make movies year after year.What determines the success of a movie is an intriguing question ,and one that cannot be explained in a single sentence.Do good directors always make good movies ? .Is it independent of the actors involed ?.How crucial is the contribution of writer towards the sucess of the movie ? Does the genre of the movie matter ?. These are some of the questions that we attempt to find a solution using our engine .
+
 
 ###Related Work
 
@@ -28,7 +29,17 @@ Our work differs from the previous two with respect to the feature vector under 
 ![Flow Diagram](figures/flow.jpg "FLOW DIAGRAM")
 
 ###FEATURE EXTRACTION
-* We treated the song as a wave and as a song as well, meaning some features were based on wave properties, and other features were based on song level characteristics. The feature vector is of length 19. 13 features were the MFCC (Mel-frequency cepstral coefficients)[2].  [4]
+
+* One of the  important  ideas used in  this engine is that ,good directors  make good movies .Feature Vector consists of 34 features .
+
+######GENRE BIT VECTOR (21 features)
+
+**List Of Genres**      
+        Action , Adventure , Animation , Comedy , Crime , Documentary , Drama , Family , Fantasy , Foreign , History , Horror , Music , Mystery ,Romance ,Science Fiction , TV movie , Thriller , War , Western 
+
+* Each movie has multiple genres.A genre bit vector of length 21 is generated to indicate if that movie is that of a particular genre .        
+
+
 
 ######CALCULATION OF MFCC  (13 features)
 * MFCC is a representation of the power spectrum of sound .
@@ -59,7 +70,7 @@ Our work differs from the previous two with respect to the feature vector under 
 ###Dataset Description
 * FingerPrinting the songs was done using the eyeD3 library[6]. Artist, album name and title of the song were obtained. Pygn [7], a wrapper over rhytm API was used to obtain the genre of the song. Using a local collection of 637 songs, we extracted features and with the genre obtained from Pygn [7] our dataset was prepared.
 
-* The target genres were 'Urban', 'Classical', 'Electronica', 'Jazz', 'Pop', 'Soundtrack', 'Alternative & Punk', 'Rock', 'Other'.
+* The target genres were 'Urban,'Classical,'Electronica,'Jazz,'Pop,'Soundtrack,'Alternative & Punk,'Rock,'Other'.
     
 
 ![alt text](figures/figure.jpg "Bargraph of the dataset")

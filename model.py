@@ -16,7 +16,7 @@ def constructModel():
     testTarget = []
     cnt = 0
 # DATA CLEANING
-    with open('data.txt', 'r') as f:
+    with open('MoviePredictor/data.txt', 'r') as f:
         for line in f:
             line = line.rstrip().split(",")
             cnt += 1
@@ -65,4 +65,6 @@ def constructModel():
             cnt += 1
 
     # TEST
+    print cnt
     return clf
+constructModel()

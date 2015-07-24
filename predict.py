@@ -44,5 +44,5 @@ def predictSuccess(movieNameList):
 	elif(prediction == 2):
 	    print "COMMERCIAL VENTURE"
 	else:
-	    print "MEDIOCORE	"
+	    print "HORRIBLE"
 	# TEST

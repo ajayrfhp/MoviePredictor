@@ -17,12 +17,14 @@ Movie Success Predictor engine  is an application of  machine learning, that bui
 
 ###Related Work
 
-* Several models have been made to solve this problem like Predicting Movie Success: Review of Existing Literature which uses Artificial Neural Networks to build the model .The Feature Vector they have used consists of analyzing the previous 10 movies of the Actors,Actresses,Director,Producer,Music Director,Writer,Marketting Budget and a factor for time of release. The weights used for the networks are number of movies that were hit in the last 10 movies . 2 types of weights are assigned to take into account release time ,ex : festival times . A movie can do realtively better releasing on a festival time .Marketing budget has also been parameterized ,with a base value of Rs 10 Crore.
+* Several models have been made to solve this problem like Predicting Movie Success:
+ Review of Existing Literature [1] which uses Artificial Neural Networks to build the model .The Feature Vector they have used consists of analyzing the previous 10 movies of the Actors,Actresses,Director,Producer,Music Director,Writer,Marketting Budget and a factor for time of release. The weights used for the networks are number of movies that were hit in the last 10 movies . 2 types of weights are assigned to take into account release time ,example : festival times . A movie can do realtively better releasing on a festival time .Marketing budget has also been parameterized ,with a base value of Rs 10 Crore.    
 
-* Another paper along the same lines is Automatic Musical Genre Classification Of Audio Signals [3]. A vector of size 9 (mean-Centroid, mean-Rolloff, mean-Flux, mean-ZeroCrossings, std-Centroid, std-Rolloff, std-Flux, std-ZeroCrossings, LowEnegry) was used as their MusicalSurfaceFeatures vector. Rhythm features were determined and their model was built using both the vectors.
+* Another paper that deals with predictive modelling of movie success  is Early Prediction of Movie Box Office Success Based on Wikipedia Activity Big Data [2] .Using activity on the wikipedia pages of the movies ,the sucess is predicted.Popularity of the movie is estimated by 4 main measures ,Number of views of the article page,number of users ,that is the human editors who contributed to that page,Number of edits made by human editors on the article and Collaborative Rigor.In addition to this ,they also used a parameter to indicate the number of screens the movie is being released .Corelation of above paremeters with box office revenue is determined and regression model is built using the paremeters.User generated data in social media enhances the ability to predict the popularity of the movie and the reaction of people to it .
+Other models have also been  built using Youtube data,twitter data etc.
 
-Our work differs from the previous two with respect to the feature vector under consideration. The song has been analyzed as a wave and as a song well.
 
+Our model principally uses the crew of the team as the important contributing factor .We did not use social media data.
 
 ##FLOW DIAGRAM
 
@@ -109,9 +111,9 @@ For building the models, we used the SCIKIT [8] library.The models we used are t
 
 
 #####References:
-* 1.[ Movie Sucess Predictor,Arundeep Kaur, AP Gurpinder Kaur ](http://www.ijarcsse.com/docs/papers/Volume_3/6_June2013/V3I6-0631.pdf) 
+* 1.[ Movie Sucess Predictor - Arundeep Kaur, AP Gurpinder Kaur ](http://www.ijarcsse.com/docs/papers/Volume_3/6_June2013/V3I6-0631.pdf) 
 
-* 2.M. Muller. Information retrieval for music and motion. In Springer, 2007.
+* 2.[ Mestyán M, Yasseri T, Kertész J (2013) Early Prediction of Movie Box Office Success Based on Wikipedia Activity Big Data. ] (http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0071226)
 
 * 3.[ George Tzanetakis,Georg Essl,Perry Cook.Automatic Music Genre Classification for audio signals ](http://ismir2001.ismir.net/pdf/tzanetakis.pdf)
 

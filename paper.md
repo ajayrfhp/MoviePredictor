@@ -17,7 +17,7 @@ Movie Success Predictor engine  is an application of  machine learning, that bui
 
 ###Related Work
 
-* Several models have been made to solve this problem like Music Genre Classification with the Million Song Dataset [1], which uses audio features and lyrical features. The Model builds a bag of words for the lyrical features. For the audio features, they used the MFCC (Mel-frequency cepstral coefficients)[2]. Their work was unique in how they used lyrical features.
+* Several models have been made to solve this problem like Predicting Movie Success: Review of Existing Literature which uses Artificial Neural Networks to build the model .The Feature Vector they have used consists of analyzing the previous 10 movies of the Actors,Actresses,Director,Producer,Music Director,Writer,Marketting Budget and a factor for time of release. The weights used for the networks are number of movies that were hit in the last 10 movies . 2 types of weights are assigned to take into account release time ,ex : festival times . A movie can do realtively better releasing on a festival time .Marketing budget has also been parameterized ,with a base value of Rs 10 Crore.
 
 * Another paper along the same lines is Automatic Musical Genre Classification Of Audio Signals [3]. A vector of size 9 (mean-Centroid, mean-Rolloff, mean-Flux, mean-ZeroCrossings, std-Centroid, std-Rolloff, std-Flux, std-ZeroCrossings, LowEnegry) was used as their MusicalSurfaceFeatures vector. Rhythm features were determined and their model was built using both the vectors.
 

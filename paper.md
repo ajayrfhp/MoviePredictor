@@ -26,13 +26,11 @@ Other models have also been  built using Youtube data,twitter data etc.
 
 Our model principally uses the crew of the team as the important contributing factor .We did not use social media data.
 
-##FLOW DIAGRAM
 
-![Flow Diagram](figures/flow.jpg "FLOW DIAGRAM")
 
 ###FEATURE EXTRACTION
 
-* One of the  important  ideas used in  this engine is that ,good directors  make good movies .Feature Vector consists of 34 features .
+* One of the  important  ideas used in  this engine is that ,good directors  make good movies .Feature Vector consists of 33 features .
 
 ######GENRE BIT VECTOR (21 features)
 
@@ -43,47 +41,47 @@ Our model principally uses the crew of the team as the important contributing fa
 
 
 
-######CALCULATION OF MFCC  (13 features)
-* MFCC is a representation of the power spectrum of sound .
-* MFCC was calculated using the open source scikit audiolabs library.
-* A highlevel description of MFCC Calulcation [5] is explained below: 
- Frame the signal into short frames.
- For each frame calculate the periodogram estimate of the power spectrum.
- Apply the mel filterbank to the power spectra, sum the energy in each filter.
- Take the logarithm of all filterbank energies.
- Take the Discrete Cosine Transform (DCT)  of the log filterbank energies.
- Keep Discrete Cosing Transform (DCT) coefficients 2-13, discard the rest.
+######CREW FEATURES  (12 features)
+**Director**
+    The previous movies of the director are determined . Revenue / Budget ratio and Critic Reviews are used .Average ,Best and worst of the above 2 factors are used .6 features in all representing the director .
+
+**Writer**
+    The previous movies of the writer are determined . Revenue / Budget ratio and Critic Reviews are used .Average ,Best and worst of the above 2 factors are used .6 features in all representing the writer .
+
+   We did not restrict ourselves to just average because ,there are movies like jaws which made 75 times the money as its budget , so the average Revenue / Budget ratio of all Spielberg movies will be high ,hence all Spielberg movies would be predicted as blockbuster .To compensate this effect , we considered all 3 factors .Average,Best and Worst.
+
+   
+
+
+
+
+
+###Dataset Preparation 
+* The Movie DataBase (TMDB) is a freely available database for hollywood movies .We used tmdbsimple ,a python package, a wrapper over existing TMDB API's to extract information about movies .
+* First ,the names of  50  popular movies and 50 mediocore of every year  from 1978 to 2015 were extracted.Using the TMDB Search API and People API ,the crew of the movie and the genre were determined .Using the information of the crew , calls were made to Search API again to extract information about the director's movies and the writer's previous movies .
     
 
-######CALCULATION OF SCALE (5 features)
 
-* We used an approximation to calculate the scale of the song. We took the five most frequently occuring frequencies in the song in groups of 5.
-* This led to the the length of the frequency vector being 5.
-* This doesn't exactly represent the scale, but we felt that it would be a better representation than just the average pitch of the song.
-
-
-
-######CALCULATION OF TEMPO (1 feature)
-
-* We felt that tempo of the song would be a good indicator of the genre, hence we selected tempo as the other feature.
-* We used @scaperot's BPM tool to find the BPM of the song.
-
-
-###Dataset Description
-* FingerPrinting the songs was done using the eyeD3 library[6]. Artist, album name and title of the song were obtained. Pygn [7], a wrapper over rhytm API was used to obtain the genre of the song. Using a local collection of 637 songs, we extracted features and with the genre obtained from Pygn [7] our dataset was prepared.
-
-* The target genres were 'Urban,'Classical,'Electronica,'Jazz,'Pop,'Soundtrack,'Alternative & Punk,'Rock,'Other'.
-    
-
-![alt text](figures/figure.jpg "Bargraph of the dataset")
     
 
 ######DATA CLEANING:
-* Soundtrack, Other, Jazz, Classical and traditional were ignored due to low number of samples.
 
 * Genre converted from string to integers through a map to suit models construction and prediction.
 
-* Samples with missing genres were ignored.
+* Target class of the movies was determined to simplify the problem and reduce it to a classification problem .
+
+######BLOCKBUSTER 
+    review >= 6.5 and (revenue / budget) >= 3
+
+######CRITICAL WINNER
+    review >= 6.5 and (revenue / budget) < 3
+
+######COMMERCIAL VENTURE 
+    review < 6.5 and review >= 5 and (revenue / budget) >= 3
+
+
+######HORRIBLE (ARSENAL )
+    review < 6.5 and review >= 5 and (revenue / budget) < 3
 
 
 
@@ -91,8 +89,7 @@ Our model principally uses the crew of the team as the important contributing fa
 ###MODELS          
 
 
-For building the models, we used the SCIKIT [8] library.The models we used are the standard classification algorithms Logistic Regression, Support Vector Machine and KMeans.
-
+For building the models, we used the SCIKIT [8] library.The models we used are the standard classification algorithm Support Vector Machine .
 
 
 ###RESULTS

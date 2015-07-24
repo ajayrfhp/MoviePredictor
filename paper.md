@@ -109,7 +109,7 @@ For building the models, we used the SCIKIT [8] library.The models we used are t
 
 
 #####References:
-* 1.Music Genre Classification with the Million Song Dataset. Dawen Liang,Haijie Gu, and Brendan O’Connor.
+* 1.[ Movie Sucess Predictor,Arundeep Kaur, AP Gurpinder Kaur ](http://www.ijarcsse.com/docs/papers/Volume_3/6_June2013/V3I6-0631.pdf) 
 
 * 2.M. Muller. Information retrieval for music and motion. In Springer, 2007.
 

@@ -45,9 +45,12 @@ Our model principally uses the crew of the team as the important contributing fa
 **Director**
     The previous movies of the director are determined . Revenue / Budget ratio and Critic Reviews are used .Average ,Best and worst of the above 2 factors are used .6 features in all representing the director .
 
+
 **Writer**
     The previous movies of the writer are determined . Revenue / Budget ratio and Critic Reviews are used .Average ,Best and worst of the above 2 factors are used .6 features in all representing the writer .
 
+
+   Revenue / Budget was taken also to nullify the inflation factor .
    We did not restrict ourselves to just average because ,there are movies like jaws which made 75 times the money as its budget , so the average Revenue / Budget ratio of all Spielberg movies will be high ,hence all Spielberg movies would be predicted as blockbuster .To compensate this effect , we considered all 3 factors .Average,Best and Worst.
 
    
@@ -57,7 +60,7 @@ Our model principally uses the crew of the team as the important contributing fa
 
 
 ###Dataset Preparation 
-* The Movie DataBase (TMDB) is a freely available database for hollywood movies .We used tmdbsimple ,a python package, a wrapper over existing TMDB API's to extract information about movies .
+* The Movie DataBase (TMDB) [3] is a freely available database for hollywood movies .We used tmdbsimple [4] ,a python package, a wrapper over existing TMDB API's to extract information about movies .
 * First ,the names of  50  popular movies and 50 mediocore of every year  from 1978 to 2015 were extracted.Using the TMDB Search API and People API ,the crew of the movie and the genre were determined .Using the information of the crew , calls were made to Search API again to extract information about the director's movies and the writer's previous movies .
     
 
@@ -94,32 +97,29 @@ For building the models, we used the SCIKIT [8] library.The models we used are t
 
 ###RESULTS
 
-| Model                 | Electronica   | Urban     | Alternative & Punk    | Pop       | Rock  | Overall Model Accuracy    |
-|---------------------- |-------------  |-------    |--------------------   |-------    |------ |------------------------   |
-| Logistic Regression   | 0             | 56.52     | 49.1                  | 28.57     | 50    | 44.55                     |
-| KMeans                | 33.33         | 42.85     | 59.45                 | 30.0      | 0     | 41.21                     |
-| SVM                   | 25            | 56.25     | 57.14                 | 29.16     | 25.0  | 45.25                     |
-|                       |               |           |                       |           |       |                           |
+| Model                 | Max Accuracy  | Expected Accuracy     | Min  Accuracy      |   
+|---------------------- |-------------  |-----------------------|--------------------|   
+| Logistic Regression   | 77            | 73                    | 69                 |  
+| KMeans                | 68            | 64.33                 | 59                 |  
+| SVM                   | 73            | 69                    | 63                 |  
+
+
+
+
+
 
 
 ###CONCLUSION:
-* Support Vector Machines showd the maximum accuracy.Model has been built to do music genre classifier .Accuracy still remains a concern .This is not a model for a standard dataset,dataset has been built from API's and model has been built for the custom data set.Suggestions for area of improvement ,get more features from the API's ,then do dimensionality reduction techniques and then build the model .Only a  limited number of   features from the API's has been chosen in this system . 
+* Support Vector Machines showed the maximum accuracy.Model has been built to predict the succes of movies .
+* Suggestions for improvement would be to consider cast of the movie ,the actors ,actresses .Release dates could be taken into consideration .Franchise factor has  not been taken into consideration ,Success of a franchise movie depends on the popularity of the franchise and seldom on the director and the writer .Jurrasic World is predicted as a Horrible Movie by this model ,but it did extraordinarily well at the box office .Popularity of the movie could be derived from social media analysis ,integrating that with this crew only model should produce better results. 
 
 
 
 #####References:
 * 1.[ Movie Sucess Predictor - Arundeep Kaur, AP Gurpinder Kaur ](http://www.ijarcsse.com/docs/papers/Volume_3/6_June2013/V3I6-0631.pdf) 
 
-* 2.[ Mestyán M, Yasseri T, Kertész J (2013) Early Prediction of Movie Box Office Success Based on Wikipedia Activity Big Data. ] (http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0071226)
+* 2.[ Mestyán M, Yasseri T, Kertész J (2013) Early Prediction of Movie Box Office Success Based on Wikipedia Activity Big Data. ](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0071226)
 
-* 3.[ George Tzanetakis,Georg Essl,Perry Cook.Automatic Music Genre Classification for audio signals ](http://ismir2001.ismir.net/pdf/tzanetakis.pdf)
+* 3.[ The Movie DataBase ](https://www.themoviedb.org/)
 
-* 4.[ Scikits Audiolab ](https://pypi.python.org/pypi/scikits.audiolab/)
-
-* 5.[ MFCC Calculation Theory ](http://www.practicalcryptography.com/miscellaneous/machine-learning/guide-mel-frequency-cepstral-coefficients-mfccs/)
-
-* 6.[ eyeD3 ](https://pypi.python.org/pypi/eyeD3)
-
-* 7.[ pygn ](https://github.com/cweichen/pygn)
-
-* 8.[ scikit ](http://scikit-learn.org/stable/)
+* 4.[ TMDBSimple ](https://pypi.python.org/pypi/tmdbsimple)

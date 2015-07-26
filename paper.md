@@ -12,15 +12,15 @@
 
 
 
-Movie Success Predictor engine  is an application of  machine learning, that builds a system that predicts the sucess of a movie.Billions of dollars are spent by various production houses across the globe to make movies year after year.What determines the success of a movie is an intriguing question ,and one that cannot be explained in a single sentence.Do good directors always make good movies ? .Is it independent of the actors involed ?.How crucial is the contribution of writer towards the sucess of the movie ? Does the genre of the movie matter ?. These are some of the questions that we attempt to find a solution using our engine .
+Movie Success Predictor engine  is an application of  machine learning, that builds a system that predicts the sucess of a movie.Billions of dollars are spent by various production houses across the globe to make movies year after year.What determines the success of a movie is an intriguing question ,and one that cannot be answered in a single sentence.Do good directors always make good movies ? Is it independent of the actors involed ?.How crucial is the contribution of writer towards the sucess of the movie ? Does the genre of the movie matter ? These are some of the questions that we attempt to find a solution using our engine .
 
 
 ###Related Work
 
 * Several models have been made to solve this problem like Predicting Movie Success:
- Review of Existing Literature [1] which uses Artificial Neural Networks to build the model .The Feature Vector they have used consists of analyzing the previous 10 movies of the Actors,Actresses,Director,Producer,Music Director,Writer,Marketting Budget and a factor for time of release. The weights used for the networks are number of movies that were hit in the last 10 movies . 2 types of weights are assigned to take into account release time ,example : festival times . A movie can do realtively better releasing on a festival time .Marketing budget has also been parameterized ,with a base value of Rs 10 Crore.    
+ Review of Existing Literature [1] which uses Artificial Neural Networks to build the model .The Feature Vector they have used is determined by  analyzing the previous 10 movies of the Actors,Actresses,Director,Producer,Music Director,Writer,Marketting Budget and a factor for time of release. The weights used for the networks are number of movies that were hit in the last 10 movies . 2 types of weights are assigned to take into account release time ,example : festival times . A movie can do realtively better releasing on a festival time .Marketing budget has also been parameterized ,with a base value of Rs 10 Crore.    
 
-* Another paper that deals with predictive modelling of movie success  is Early Prediction of Movie Box Office Success Based on Wikipedia Activity Big Data [2] .Using activity on the wikipedia pages of the movies ,the sucess is predicted.Popularity of the movie is estimated by 4 main measures ,Number of views of the article page,number of users ,that is the human editors who contributed to that page,Number of edits made by human editors on the article and Collaborative Rigor.In addition to this ,they also used a parameter to indicate the number of screens the movie is being released .Corelation of above paremeters with box office revenue is determined and regression model is built using the paremeters.User generated data in social media enhances the ability to predict the popularity of the movie and the reaction of people to it .
+* Another paper that deals with predictive modelling of movie success  is Early Prediction of Movie Box Office Success Based on Wikipedia Activity Big Data [2] .Using activity on the wikipedia pages of the movies ,the sucess is predicted.Popularity of the movie is estimated by 4 main measures ,Number of views of the article page,Number of users ,that is the human editors who contributed to that page,Number of edits made by human editors on the article and Collaborative Rigor.In addition to this ,they also used a parameter to indicate the number of screens the movie is being released .Corelation of above paremeters with box office revenue is determined and regression model is built using the paremeters.User generated data in social media enhances the ability to predict the popularity of the movie and the reaction of people to it .
 Other models have also been  built using Youtube data,twitter data etc.
 
 
@@ -51,7 +51,7 @@ Our model principally uses the crew of the team as the important contributing fa
 
 
    Revenue / Budget was taken also to nullify the inflation factor .
-   We did not restrict ourselves to just average because ,there are movies like jaws which made 75 times the money as its budget , so the average Revenue / Budget ratio of all Spielberg movies will be high ,hence all Spielberg movies would be predicted as blockbuster .To compensate this effect , we considered all 3 factors .Average,Best and Worst.
+   We did not restrict ourselves to just average because ,there are movies like jaws which made 75 times the money as its budget , so the average Revenue / Budget ratio of all Spielberg movies will be high ,hence all Spielberg movies would be predicted as blockbusters .To compensate this effect , we considered all 3 factors .Average,Best and Worst.
 
    
 
@@ -92,7 +92,7 @@ Our model principally uses the crew of the team as the important contributing fa
 ###MODELS          
 
 
-For building the models, we used the SCIKIT [8] library.The models we used are the standard classification algorithm Support Vector Machine .
+For building the models, we used the SCIKIT [8] library.The models we used are the standard classification algorithm Support Vector Machine ,KMeans and Logistic Regression.
 
 
 ###RESULTS
